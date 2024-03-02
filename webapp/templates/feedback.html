@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Feedback</title>
+    <link rel="stylesheet" href= "{{ url_for('static' , filename='css/styles.css' ) }}">
+</head>
+<body>
+    <div id="sideMenu" class="sidebar">
+        <a href="/"><font size="5px">Regex Validator</font></a>
+        <a href="email"><font size="5px">Email Validator</font></a>
+        <a href="notes"><font size="5px">About Regex</font></a>
+        <a href="#"><font size="5px">Feedback</font></a>
+    </div>
+    
+    <div id="title" class="title">
+        <h1>Feedback</h1>
+    </div>
+    <div id="content" class="content">
+        <form id="feedbackForm" onsubmit="handleSubmit(event)">
+            <table>
+            <tr><td><label for="name">Name:</label></td><br>
+            <td><input type="text" id="name" name="name" required><br></td></tr>
+            
+            <tr><td><label for="email">Email:</label></td><br>
+            <td><input type="email" id="email" name="email" required><br></td></tr>
+            
+            <tr><td><label for="feedback">Feedback:</label></td><br>
+            <td><textarea id="feedback" name="feedback" rows="4" required></textarea><br></td></tr>
+            
+            <tr><td><input type="submit" class="button" value="Submit"></td></tr>
+        </table>  
+        </form>
+          
+          <div id="thankYouMessage" style="display:none;">
+            <h3>Thank you for your feedback!</h3>
+          </div>
+          <script>
+            function handleSubmit(event) 
+            {
+              event.preventDefault();
+              document.getElementById('feedbackForm').style.display = 'none';
+              document.getElementById('thankYouMessage').style.display = 'block';
+            }
+          </script>
+            
+            </div>
+            <footer>
+                <div class="footer-content">
+                    <p>Copyright &copy; Mustafa Shaik. All rights reserved.</p>
+                    <p><a href="mailto:shaikmustafa572.com">Contact Us</a></p>
+                </div>
+            </footer>
+    </body>
+    </html>

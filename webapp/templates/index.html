@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Regex Validator</title>
+    <link rel="stylesheet" href= "{{ url_for('static' , filename='css/styles.css' ) }}">
+</head>
+<body>
+    <div id="sideMenu" class="sidebar">
+        <a href="#"><font size="5px">Regex Validator</font></a>
+        <a href="email"><font size="5px">Email Validator</font></a>
+        <a href="notes"><font size="5px">About Regex</font></a>
+        <a href="feedback"><font size="5px">Feedback</font></a>
+    </div>
+    
+    <div id="title" class="title">
+        <h1>Regex Validator</h1>
+    </div>
+    <div id="content" class="content">
+    
+    <form id="regexForm" method="post" action="/test">
+        <table>
+            <br><tr><td><label for="pattern">Pattern:</label></td>
+                <td><input type="text" id="pattern" name="pattern" placeholder="Enter your pattern" required><br></td></tr>
+            <tr><td><label for="testString">Test String:</label></td>
+            <td><textarea id="testString" name="testString" placeholder="Enter your string" required></textarea><br></td></tr>
+            <tr><td><input type="button" class="button" value="Match" onclick="matchRegex()"></td></tr>
+        </table>
+    </form>
+    
+    </div>
+    
+    <div id="results" class="content"></div>
+    <footer>
+        <div class="footer-content">
+            <p>Copyright &copy; Mustafa Shaik. All rights reserved.</p>
+            <p><a href="mailto:shaikmustafa572.com">Contact Us</a></p>
+        </div>
+    </footer>
+    <script>
+        function matchRegex() {
+            const pattern = document.getElementById('pattern').value;
+            const testString = document.getElementById('testString').value;
+            var preindex = 0;
+            fetch('/results', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({pattern, testString}),
+            })
+            .then(response => response.json())
+            .then(data => {
+                const results = document.getElementById('results');
+                results.innerHTML = '';
+                if (data.matches.length) {
+                    data.matches.forEach(match => {
+                        var index = testString.substring(preindex).indexOf(match)
+                        const div = document.createElement('div');
+                        div.textContent = '[' + match+ ' , '+(index+preindex+1)+']'
+                        results.append(div)
+                        preindex = (preindex+index)+1;
+                    });
+                } else {
+                    results.textContent = 'No matches';
+                }
+            })
+            .catch(error => console.error('Error:', error));
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Regex</title>
+    <link rel="stylesheet" href= "{{ url_for('static' , filename='css/styles.css' ) }}">
+</head>
+<body>
+    <div id="sideMenu" class="sidebar">
+        <a href="/"><font size="5px">Regex Validator</font></a>
+        <a href="email"><font size="5px">Email Validator</font></a>
+        <a href="#"><font size="5px">About Regex</font></a>
+        <a href="feedback"><font size="5px">Feedback</font></a>
+    </div>
+    
+    <div id="title" class="title">
+        <h1>A Brief idea about Regex</h1>
+    </div>
+    <div id="content" class="content">
+        <p>A Regex (Regular Expression) is a sequence of characters which defines a pattern by using which we can search and manipulate the strings. Regex can be used in mostly all programming languages which can be used for managing data. In Python we can use Regex simply by importing 're' module.</p>
+        <p>Some of the functions available in the 're' module are,</p>
+        <p>re.match(): Checks if the beginning of a string matches the regex pattern.</p>
+        <p>re.findall(): Finds all non-overlapping matches of the regex pattern in the string and returns them as a list.</p>
+        <p>re.finditer(): Similar to findall(), but returns an iterator yielding match objects instead of a list.</p>    
+        <p>re.IGNORECASE (or re.I): Makes the match case-insensitive.</p> 
+        <p>re.MULTILINE (or re.M): Allows the start and end anchor (^ and $) to match at the start and end of each line, not just the start and end of the whole string</p>            
+        <p>For more information about RegEx in python click <a href="https://www.geeksforgeeks.org/python-regex/">here</a></p> 
+      
+    </div>
+    <footer>
+        <div class="footer-content">
+            <p>Copyright &copy; Mustafa Shaik. All rights reserved.</p>
+            <p><a href="mailto:shaikmustafa572.com">Contact Us</a></p>
+        </div>
+    </footer>
+</body>
+</html>
